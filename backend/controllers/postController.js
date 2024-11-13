@@ -94,7 +94,7 @@ const deletePost = async (req, res) => {
         return res.status(401).json({ message: 'Não autorizado' });
       }
 
-      await post.remove();
+      await Post.findByIdAndDelete(req.params.id); // Alteração aqui
       res.json({ message: 'Post removido' });
     } else {
       res.status(404).json({ message: 'Post não encontrado' });
